@@ -1,8 +1,15 @@
 package assign04;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.math.BigInteger;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
+
+import assign02.CS2420Student;
 
 
 /*
@@ -141,9 +148,10 @@ public class LargestNumberSolver {
 	 * @Return - the kth largest integer
 	 */
 	public static Integer[] findKthLargest(List<Integer[]> list, int k) throws IllegalArgumentException {
+		if (list.size() < k)
+			new IllegalArgumentException("List size smaller than k");
 		Integer[][] arr = new Integer[list.size()][];
 		arr = list.toArray(arr);
-		
 		insertionSort(arr, (i1, i2) -> findLargestInt(i1) - findLargestInt(i2));
 		return arr[k];
 	}
@@ -158,7 +166,35 @@ public class LargestNumberSolver {
 	 * @Return - an array of integers within the file
 	 */
 	public static List<Integer[]> readFile(String filename) {
-		return null;
+		try {
+			Scanner fileIn = new Scanner(new File(filename));
+			int lineNumber = 0;
+			List<Integer>;
+			List<Integer[]> arrayList = new ArrayList<>();
+			while (fileIn.hasNextLine()) {	
+				String line = fileIn.nextLine();
+				lineNumber++;
+			} // repeat for all lines
+			
+			fileIn.close();
+		} catch (FileNotFoundException e) {
+			return new ArrayList<>();
+		} 
+	}
+	
+	private Integer[] lineToArray(String line){
+		String next;
+		Scanner lineIn = new Scanner(line);
+		Integer[] array;
+		lineIn.useDelimiter(" ");
+		
+		while (lineIn.hasNext()) {
+			next = lineIn.next();
+			Integer.valueOf(next);
+		}
+		
+		
+		return array;
 	}
 	
 	// As lambda: (o1, o2) -> Integer.valueOf("" + o1 + o2) - Integer.valueOf("" + o2 + o1)
