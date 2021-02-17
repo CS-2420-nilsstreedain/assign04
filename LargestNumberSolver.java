@@ -117,7 +117,11 @@ public class LargestNumberSolver {
 	 * @Return - the sum of all elements in the array
 	 */
 	public static BigInteger sum(List<Integer[]> list) {
-		return null;
+		BigInteger sum = new BigInteger("0");
+		for (int i = 0; i < list.size(); i++) {
+			sum.add(findLargestNumber(list.get(i)));
+		}
+		return sum;
 	}
 
 	/*
