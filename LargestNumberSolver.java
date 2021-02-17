@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.util.Comparator;
 import java.util.List;
 
+
 /*
 * A priority queue that supports access of the minimum element only.
 * 
@@ -22,20 +23,18 @@ public class LargestNumberSolver {
 	 * @Param cmp - the comparator
 	 */
 	public static <T> void insertionSort(T[] arr, Comparator<? super T> cmp) {
-		int length = arr.length;
-		for (int i = 0; i < length; i++) {
+		for (int i = 1; i < arr.length; i++) {
 			T val = arr[i];
 			int j;
-			for (j = i - 1; j >=0 && (cmp.compare(arr[j],val) < 0); j++) {
+			for (j = i - 1; j >=0 && (cmp.compare(arr[j],val) < 0); j--)
 				arr[j+1] = arr[j];
-			}
 			arr[j + 1] = val;
 		}
 	}
 
 	/*
 	 * This method returns the largest number that can be formed by arranging the
-	 * integers of the given array, in any o	rder. If the array is empty, the largest
+	 * integers of the given array, in any order. If the array is empty, the largest
 	 * number that can be formed is 0. This method must not alter the given array
 	 * and must call your insertionSort method with a Comparator or lambda
 	 * expression that you design.
@@ -45,7 +44,28 @@ public class LargestNumberSolver {
 	 * @Return the largest number in the provided array
 	 */
 	public static BigInteger findLargestNumber(Integer[] arr) {
-		return null;
+		// Checks if arr has a length of zero
+		if (arr.length == 0)
+			return new BigInteger("0");
+
+		// Copies arr to newArr
+		Integer[] newArr = new Integer[arr.length];
+		for (int i = 0; i < arr.length; i++)
+			newArr[i] = arr[i];
+		
+		// Sorts newArr with OrderByConcat
+		insertionSort(newArr, new OrderByConcat());
+
+		// Concatenates each element of newArr
+		String concatenate = "";
+		for (int i = 0; i < newArr.length; i++)
+			concatenate += newArr[i];
+		
+		// Returns concatenated String as a BigInteger
+		return new BigInteger(concatenate);
+		
+			
+		//largeNumber = BigInteger.valueOf(Integer.valueOf(concatenate));
 	}
 
 	/*
@@ -123,5 +143,17 @@ public class LargestNumberSolver {
 	 */
 	public static List<Integer[]> readFile(String filename) {
 		return null;
+	}
+	
+	// As lambda: (o1, o2) -> Integer.valueOf("" + o1 + o2) - Integer.valueOf("" + o2 + o1)
+	protected static class OrderByConcat implements Comparator<Integer> {
+		public int compare(Integer x, Integer y) {
+			// Concatenates both ways possible for X and Y and casts each to an int
+			int xy = Integer.valueOf("" + x + y);
+			int yx = Integer.valueOf("" + y + x);
+			
+			// Returns the difference between XY and YX
+			return xy - yx;
+		}
 	}
 }
