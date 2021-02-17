@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 /**
  * A priority queue that supports access of the minimum element only.
@@ -199,29 +200,37 @@ public class LargestNumberSolver {
 	 * @return array - array created from line parameter
 	 */
 	private static Integer[] lineToArray(String line) {
-		// ArrayList<Integer> preArray = new ArrayList<>();
-		// Scanner lineIn = new Scanner(line);
-
-		// Splits the line into a String array
-		String[] lineSplit = line.split(" ");
-
-		// Creates an Integer array the same length as the lineSplit array
-		Integer[] array = new Integer[lineSplit.length];
-
-//		Integer[][] arr = list.toArray(new Integer[list.size()][]);
-
-		// Copies each value of the String array to an Integer array
-		for (int i = 0; i < lineSplit.length; i++)
-			array[i] = Integer.valueOf(lineSplit[i]);
-
-		return array;
-
-		/*
+		/* Old code:
+		 * 
+		 * ArrayList<Integer> preArray = new ArrayList<>();
+		 * Scanner lineIn = new Scanner(line);
+		 * 
 		 * lineIn.useDelimiter(" "); while (lineIn.hasNext()) {
 		 * preArray.add(Integer.valueOf(lineIn.next())); } Integer[] array = new
 		 * Integer[preArray.size()]; for (int i = 0; i < preArray.size(); i++) {
 		 * array[i] = preArray.get(i); } lineIn.close();
 		 */
 
+		/* To try:
+		 * 
+		 * Ended up having to stream to int[] then Integer[] because you can't go from
+		 * String[] to Integer[] so it may be slower but I want to see. Arrays.stream
+		 * is primitive and Stream.of is non primitive.
+		 * 
+		 * Integer[] array = Arrays.stream(line.split(" ")).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
+		 * Integer[] array = Stream.of(line.split(" ")).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
+		 */
+		
+		// Splits the line into a String array
+		String[] lineSplit = line.split(" ");
+
+		// Creates an Integer array the same length as the lineSplit array
+		Integer[] array = new Integer[lineSplit.length];
+
+		// Copies each value of the String array to an Integer array
+		for (int i = 0; i < lineSplit.length; i++)
+			array[i] = Integer.valueOf(lineSplit[i]);
+
+		return array;
 	}
 }
