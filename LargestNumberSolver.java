@@ -129,7 +129,7 @@ public class LargestNumberSolver {
 	 * array in the given list. E.g., if k=0 returns the largest overall, if
 	 * k=list.size()-1 returns the smallest overall. This method returns the
 	 * original array that represents the kth largest number, not the kth largest
-	 * number itself. An IllegalArgumentException (Links to an external site.) is
+	 * number itself. An IllegalArgumentException is
 	 * thrown if k is not a valid position in the list. This method must not alter
 	 * the given list and must call your insertionSort method with a Comparator or
 	 * lambda expression that you design.
@@ -141,7 +141,11 @@ public class LargestNumberSolver {
 	 * @Return - the kth largest integer
 	 */
 	public static Integer[] findKthLargest(List<Integer[]> list, int k) throws IllegalArgumentException {
-		return null;
+		Integer[][] arr = new Integer[list.size()][];
+		arr = list.toArray(arr);
+		
+		insertionSort(arr, (i1, i2) -> findLargestInt(i1) - findLargestInt(i2));
+		return arr[k];
 	}
 
 	/*
