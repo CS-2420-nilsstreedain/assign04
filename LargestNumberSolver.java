@@ -3,7 +3,6 @@ package assign04;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigInteger;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -166,30 +165,28 @@ public class LargestNumberSolver {
 	 * @Return - an array of integers within the file
 	 */
 	public static List<Integer[]> readFile(String filename) {
+		ArrayList<Integer[]> arrays = new ArrayList<>();
 		try {
 			Scanner fileIn = new Scanner(new File(filename));
-			int lineNumber = 0;
-			List<Integer[]> arrayList = new ArrayList<>();
 			while (fileIn.hasNextLine()) {	
 				String line = fileIn.nextLine();
-				lineNumber++;
+				arrays.add(lineToArray(line));
 			} // repeat for all lines
 			
 			fileIn.close();
 		} catch (FileNotFoundException e) {
-			return new ArrayList<>();
+			System.err.println(e.getMessage() + " File not found.");
 		} 
+		return arrays;
 	}
 	
-	private Integer[] lineToArray(String line){
-		String next;
-		Scanner lineIn = new Scanner(line);
+	private static Integer[] lineToArray(String line){
 		ArrayList<Integer> preArray = new ArrayList<>();
+		Scanner lineIn = new Scanner(line);
 		lineIn.useDelimiter(" ");
 		
 		while (lineIn.hasNext()) {
-			next = lineIn.next();
-			preArray.add(Integer.valueOf(next));
+			preArray.add(Integer.valueOf(lineIn.next()));
 		}
 		
 		Integer[] array = new Integer[preArray.size()];
@@ -197,6 +194,7 @@ public class LargestNumberSolver {
 			array[i] = preArray.get(i);
 		}
 		
+		lineIn.close();
 		return array;
 	}
 	
