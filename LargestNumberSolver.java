@@ -181,21 +181,28 @@ public class LargestNumberSolver {
 	}
 	
 	private static Integer[] lineToArray(String line){
-		ArrayList<Integer> preArray = new ArrayList<>();
-		Scanner lineIn = new Scanner(line);
-		lineIn.useDelimiter(" ");
+		//ArrayList<Integer> preArray = new ArrayList<>();
+		//Scanner lineIn = new Scanner(line);
 		
+		String[] lineSplit = line.split(" ");
+		Integer[] array = new Integer[lineSplit.length];
+		for (int i = 0; i < lineSplit.length; i++) {
+			array[i] = Integer.valueOf(lineSplit[i]);
+		}
+		return array;
+		
+		/*
+		lineIn.useDelimiter(" ");
 		while (lineIn.hasNext()) {
 			preArray.add(Integer.valueOf(lineIn.next()));
 		}
-		
 		Integer[] array = new Integer[preArray.size()];
 		for (int i = 0; i < preArray.size(); i++) {
 			array[i] = preArray.get(i);
 		}
-		
 		lineIn.close();
-		return array;
+		*/
+		
 	}
 	
 	// As lambda: (o1, o2) -> Integer.valueOf("" + o1 + o2) - Integer.valueOf("" + o2 + o1)
