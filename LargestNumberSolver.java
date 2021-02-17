@@ -83,7 +83,11 @@ public class LargestNumberSolver {
 	 * @Return largest number in data type int
 	 */
 	public static int findLargestInt(Integer[] arr) throws OutOfRangeException {
-		return 0;
+		BigInteger number = findLargestNumber(arr);
+		if ((number.compareTo(BigInteger.valueOf(Integer.MAX_VALUE))) > 0) {
+			new OutOfRangeException("Number larger than maximum int size");
+		}
+		return number.intValueExact();
 	}
 
 	/*
@@ -97,7 +101,11 @@ public class LargestNumberSolver {
 	 * @Return largest number in data type long
 	 */
 	public static long findLargestLong(Integer[] arr) throws OutOfRangeException {
-		return 0;
+		BigInteger number = findLargestNumber(arr);
+		if ((number.compareTo(BigInteger.valueOf(Long.MAX_VALUE))) > 0) {
+			new OutOfRangeException("Number larger than maximum long size");
+		}
+		return number.longValueExact();
 	}
 
 	/*
