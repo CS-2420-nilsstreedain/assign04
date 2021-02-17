@@ -169,7 +169,6 @@ public class LargestNumberSolver {
 		try {
 			Scanner fileIn = new Scanner(new File(filename));
 			int lineNumber = 0;
-			List<Integer>;
 			List<Integer[]> arrayList = new ArrayList<>();
 			while (fileIn.hasNextLine()) {	
 				String line = fileIn.nextLine();
@@ -185,14 +184,18 @@ public class LargestNumberSolver {
 	private Integer[] lineToArray(String line){
 		String next;
 		Scanner lineIn = new Scanner(line);
-		Integer[] array;
+		ArrayList<Integer> preArray = new ArrayList<>();
 		lineIn.useDelimiter(" ");
 		
 		while (lineIn.hasNext()) {
 			next = lineIn.next();
-			Integer.valueOf(next);
+			preArray.add(Integer.valueOf(next));
 		}
 		
+		Integer[] array = new Integer[preArray.size()];
+		for (int i = 0; i < preArray.size(); i++) {
+			array[i] = preArray.get(i);
+		}
 		
 		return array;
 	}
