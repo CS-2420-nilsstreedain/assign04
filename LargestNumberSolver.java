@@ -4,28 +4,38 @@ import java.math.BigInteger;
 import java.util.Comparator;
 import java.util.List;
 
+/*
+* A priority queue that supports access of the minimum element only.
+* 
+* @author Kyle Williams and Nils Streedain
+* 
+* @version February 16, 2021
+*/
+
 public class LargestNumberSolver {
 	
 	/*
 	 * This generic method sorts the input array using an insertion sort and the
-	 * input Comparator object.
-	 * 
-	 * A priority queue that supports access of the minimum element only.
-	 * 
-	 * @author Kyle Williams and Nils Streedain
-	 * 
-	 * @version February 16, 2021
-	 * 
-	 * @param <T> - the type of elements contained in this priority queue
+	 * input Comparator object. 
+	 * @Param <T> - the type of elements contained in this priority queue
+	 * @Param arr - the array of elements to search through
+	 * @Param cmp - the comparator
 	 */
-	
 	public static <T> void insertionSort(T[] arr, Comparator<? super T> cmp) {
-
+		int length = arr.length;
+		for (int i = 0; i < length; i++) {
+			T val = arr[i];
+			int j;
+			for (j = i - 1; j >=0 && (cmp.compare(arr[j],val) < 0); j++) {
+				arr[j+1] = arr[j];
+			}
+			arr[j + 1] = val;
+		}
 	}
 
 	/*
 	 * This method returns the largest number that can be formed by arranging the
-	 * integers of the given array, in any order. If the array is empty, the largest
+	 * integers of the given array, in any o	rder. If the array is empty, the largest
 	 * number that can be formed is 0. This method must not alter the given array
 	 * and must call your insertionSort method with a Comparator or lambda
 	 * expression that you design.
