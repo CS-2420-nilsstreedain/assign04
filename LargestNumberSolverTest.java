@@ -10,7 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * 
+ * Overall JUnit tester for the LargestNumberSolver class
  * 
  * @author Kyle Williams, Nils Streedain
  * @version February 17, 2021

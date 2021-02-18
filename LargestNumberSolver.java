@@ -11,10 +11,11 @@ import java.util.Scanner;
 //import java.util.stream.Stream;
 
 /**
- * A priority queue that supports access of the minimum element only.
+ * Methods to find the largest number via concatenating the individual elements
+ * in a provided Integer array or collection of Integer arrays
  * 
- * @author Kyle Williams and Nils Streedain
- * @version February 16, 2021
+ * @author Kyle Williams, Nils Streedain
+ * @version February 17, 2021
  */
 
 public class LargestNumberSolver {
@@ -45,11 +46,8 @@ public class LargestNumberSolver {
 	}
 
 	/**
-	 * This method returns the largest number that can be formed by arranging the
-	 * integers of the given array, in any order. If the array is empty, the largest
-	 * number that can be formed is 0. This method must not alter the given array
-	 * and must call your insertionSort method with a Comparator or lambda
-	 * expression that you design.
+	 * This method compares each Integer from the provided array and concatenating
+	 * them to create the largest possible number, returns as a BigInteger
 	 * 
 	 * @param arr - an array of Integers
 	 * @return the largest number in the provided array
@@ -76,12 +74,9 @@ public class LargestNumberSolver {
 	}
 
 	/**
-	 * This method returns the largest int value that can be formed by arranging the
-	 * integers of the given array, in any order. An OutOfRangeException is thrown
-	 * if the largest number that can be formed is too large for the int data type.
-	 * Logic for solving the problem of determining the largest number should not
-	 * appear again in this method — call an existing public method or a helper
-	 * method. This method must not alter the given array.
+	 * This method compares each Integer from the provided array and concatenating
+	 * them to create the largest possible number, returns as an int, does not work
+	 * if larger than 2^32 (the maximum int value)
 	 * 
 	 * @param arr - an array of Integers
 	 * @throws OutOfRangeException if largest number is too large for int data type
@@ -132,14 +127,10 @@ public class LargestNumberSolver {
 	}
 
 	/**
-	 * This method determines the kth largest number that can be formed by each
-	 * array in the given list. E.g., if k=0 returns the largest overall, if
-	 * k=list.size()-1 returns the smallest overall. This method returns the
-	 * original array that represents the kth largest number, not the kth largest
-	 * number itself. An IllegalArgumentException is thrown if k is not a valid
-	 * position in the list. This method must not alter the given list and must call
-	 * your insertionSort method with a Comparator or lambda expression that you
-	 * design.
+	 * This method determines the kth largest number formed using the findLargestInt
+	 * method above, and returns the associated array. Throws
+	 * IllegalArgumentException if k is not a valid position in the list. This
+	 * method does not alter the given list.
 	 * 
 	 * @param arr - an array of Integers
 	 * @throws IllegalArgumentException if k is an invalid position in the list
@@ -200,10 +191,11 @@ public class LargestNumberSolver {
 	 * @return array - array created from line parameter
 	 */
 	private static Integer[] lineToArray(String line) {
-		/* Old code:
+		/*
+		 * Old code:
 		 * 
-		 * ArrayList<Integer> preArray = new ArrayList<>();
-		 * Scanner lineIn = new Scanner(line);
+		 * ArrayList<Integer> preArray = new ArrayList<>(); Scanner lineIn = new
+		 * Scanner(line);
 		 * 
 		 * lineIn.useDelimiter(" "); while (lineIn.hasNext()) {
 		 * preArray.add(Integer.valueOf(lineIn.next())); } Integer[] array = new
@@ -211,16 +203,20 @@ public class LargestNumberSolver {
 		 * array[i] = preArray.get(i); } lineIn.close();
 		 */
 
-		/* To try:
+		/*
+		 * To try:
 		 * 
 		 * Ended up having to stream to int[] then Integer[] because you can't go from
-		 * String[] to Integer[] so it may be slower but I want to see. Arrays.stream
-		 * is primitive and Stream.of is non primitive.
+		 * String[] to Integer[] so it may be slower but I want to see. Arrays.stream is
+		 * primitive and Stream.of is non primitive.
 		 * 
-		 * Integer[] array = Arrays.stream(line.split(" ")).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
-		 * Integer[] array = Stream.of(line.split(" ")).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
+		 * Integer[] array =
+		 * Arrays.stream(line.split(" ")).mapToInt(Integer::parseInt).boxed().toArray(
+		 * Integer[]::new); Integer[] array =
+		 * Stream.of(line.split(" ")).mapToInt(Integer::parseInt).boxed().toArray(
+		 * Integer[]::new);
 		 */
-		
+
 		// Splits the line into a String array
 		String[] lineSplit = line.split(" ");
 
