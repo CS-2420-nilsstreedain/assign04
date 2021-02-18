@@ -10,8 +10,6 @@ import java.util.Vector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.sun.org.apache.xpath.internal.operations.String;
-
 /**
  * Overall JUnit tester for the LargestNumberSolver class
  * 
