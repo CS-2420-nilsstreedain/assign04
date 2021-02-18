@@ -322,4 +322,21 @@ class LargestNumberSolverTest {
 		assertArrayEquals(new Integer[] { 3, 3, 3 },
 				LargestNumberSolver.findKthLargest(arrayListWithEmptyIntegerArrays, 0));
 	}
+	
+	
+	// Tests readFile by inputting the file and confirming three indexes
+	@Test
+	void readFileArrayList() {
+		ArrayList<Integer[]> file = (ArrayList<Integer[]>) LargestNumberSolver.readFile("src/assign04/integers.txt");
+		assertArrayEquals(new Integer[] { 88, 51 }, file.get(7));
+		assertArrayEquals(new Integer[] { 92, 89, 39, 7, 21 }, file.get(13));
+		assertArrayEquals(new Integer[] { 21, 75, 100, 99 }, file.get(739));
+	}
+	
+	// Test readFile by inputting an invalid file and expecting an empty array
+	@Test
+	void readFileEmpty() {
+		ArrayList<Integer[]> file = (ArrayList<Integer[]>) LargestNumberSolver.readFile("");
+		assertEquals(new ArrayList<Integer[]>(),file);
+	}
 }
