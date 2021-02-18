@@ -121,7 +121,7 @@ public class LargestNumberSolver {
 
 		// Iterates over each value in list and adds the largest number
 		for (int i = 0; i < list.size(); i++)
-			sum.add(findLargestNumber(list.get(i)));
+			sum = sum.add(findLargestNumber(list.get(i)));
 
 		return sum;
 	}
@@ -132,14 +132,15 @@ public class LargestNumberSolver {
 	 * IllegalArgumentException if k is not a valid position in the list. This
 	 * method does not alter the given list.
 	 * 
-	 * @param arr - an array of Integers
+	 * @param list - a list of Integers
+	 * @param k - sorted position of list array to be returned
 	 * @throws IllegalArgumentException if k is an invalid position in the list
 	 * @return - the kth largest integer
 	 */
 	public static Integer[] findKthLargest(List<Integer[]> list, int k) throws IllegalArgumentException {
-		// Throws exception if k is larger than the list size
-		if (list.size() < k)
-			new IllegalArgumentException("List size smaller than k");
+		// Throws exception if k is larger than the list size or the list size is zero
+		if (list.size() < k || list.size() == 0)
+			throw new IllegalArgumentException("k is an invalid position in the list");
 
 		// Creates a 2D Integer array copied from list
 		Integer[][] arr = list.toArray(new Integer[list.size()][]);
