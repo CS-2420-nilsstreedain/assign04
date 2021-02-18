@@ -324,6 +324,8 @@ class LargestNumberSolverTest {
 	}
 	
 	
+	// -------------------------------------------------- readFile() method tests --------------------------------------------------
+	
 	// Tests readFile by inputting the file and confirming three indexes
 	@Test
 	void readFileArrayList() {
@@ -335,8 +337,15 @@ class LargestNumberSolverTest {
 	
 	// Test readFile by inputting an invalid file and expecting an empty array
 	@Test
-	void readFileEmpty() {
+	void readFileNoFile() {
 		ArrayList<Integer[]> file = (ArrayList<Integer[]>) LargestNumberSolver.readFile("");
+		assertEquals(new ArrayList<Integer[]>(),file);
+	}
+	
+	// Test readFile by inputting an invalid file and expecting an empty file
+	@Test
+	void readFileEmptyFile() {
+		ArrayList<Integer[]> file = (ArrayList<Integer[]>) LargestNumberSolver.readFile("src/assign04/empty.txt");
 		assertEquals(new ArrayList<Integer[]>(),file);
 	}
 }
