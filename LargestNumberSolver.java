@@ -36,7 +36,7 @@ public class LargestNumberSolver {
 
 			// Shifts values larger than i but placed lower than i in the array up 1 index
 			int j;
-			for (j = i - 1; j >= 0 && (cmp.compare(arr[j], val) < 0); j--)
+			for (j = i - 1; j >= 0 && (cmp.compare(arr[j], val) > 0); j--)
 				arr[j + 1] = arr[j];
 
 			// Places value in the open space created by the shift of larger values
@@ -61,7 +61,7 @@ public class LargestNumberSolver {
 
 		// Sorts newArr with a lambda by concatenating both ways possible for X and Y
 		// and casts each to an Integer, returns difference
-		insertionSort(newArr, (o1, o2) -> Integer.valueOf("" + o1 + o2) - Integer.valueOf("" + o2 + o1));
+		insertionSort(newArr, (o1, o2) -> Integer.valueOf("" + o2 + o1) - Integer.valueOf("" + o1 + o2));
 
 		// Concatenates every element of newArr
 		String concatenate = "";
@@ -145,7 +145,7 @@ public class LargestNumberSolver {
 		Integer[][] arr = list.toArray(new Integer[list.size()][]);
 
 		// Sorts the copied array by findLargestInt
-		insertionSort(arr, (i1, i2) -> findLargestInt(i1) - findLargestInt(i2));
+		insertionSort(arr, (i1, i2) -> findLargestInt(i2) - findLargestInt(i1));
 
 		return arr[k];
 	}
