@@ -12,7 +12,7 @@ public class LargestNumberSolverTimer {
 		int timesToLoop = 1000;
 		ArrayList<Integer[]> list = new ArrayList<>();
 		// For each problem size n . . .
-		for (int n = 1000; n <= 10000; n += 1000) {
+		for (int n = 100; n <= 1000; n += 100) {
 
 			// Generate an array of n uNIDs
 			int[] qNum = new int[n];
