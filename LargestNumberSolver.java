@@ -86,9 +86,9 @@ public class LargestNumberSolver {
 		// Finds and returns largest number unless it doesn't fit in an int data type
 		BigInteger number = findLargestNumber(arr);
 		if ((number.compareTo(BigInteger.valueOf(Integer.MAX_VALUE))) > 0)
-			new OutOfRangeException("Number larger than maximum int size");
+			throw new OutOfRangeException("Number larger than maximum int size");
 
-		return number.intValueExact();
+		return number.intValue();
 	}
 
 	/**
@@ -103,9 +103,9 @@ public class LargestNumberSolver {
 		// Finds and returns largest number unless it doesn't fit in a long data type
 		BigInteger number = findLargestNumber(arr);
 		if ((number.compareTo(BigInteger.valueOf(Long.MAX_VALUE))) > 0)
-			new OutOfRangeException("Number larger than maximum long size");
+			throw new OutOfRangeException("Number larger than maximum long size");
 
-		return number.longValueExact();
+		return number.longValue();
 	}
 
 	/**
