@@ -132,7 +132,7 @@ public class LargestNumberSolver {
 	 * method does not alter the given list.
 	 * 
 	 * @param list - a list of Integers
-	 * @param k - sorted position of list array to be returned
+	 * @param k    - sorted position of list array to be returned
 	 * @throws IllegalArgumentException if k is an invalid position in the list
 	 * @return - the kth largest integer
 	 */
