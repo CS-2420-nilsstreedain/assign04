@@ -1,6 +1,6 @@
 package assign04;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Random;
 
 public class LargestNumberSolverTimer {
@@ -10,7 +10,7 @@ public class LargestNumberSolverTimer {
 
 		// Do 10000 lookups and use the average running time
 		int timesToLoop = 1000;
-		ArrayList<Integer[]> list = new ArrayList<>();
+//		ArrayList<Integer[]> list = new ArrayList<>();
 		// For each problem size n . . .
 		for (int n = 100; n <= 1000; n += 100) {
 
@@ -49,7 +49,7 @@ public class LargestNumberSolverTimer {
 
 			// Now, run the test
 			startTime = System.nanoTime();
-			int insert = -1;
+//			int insert = -1;
 			for (int i = 0; i < timesToLoop; i++) {
 				// First (and second, but using java's sort method for #5
 				LargestNumberSolver.findLargestNumber(randomArray);
