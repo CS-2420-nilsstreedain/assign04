@@ -14,7 +14,7 @@ import java.util.Scanner;
  * in a provided Integer array or collection of Integer arrays
  * 
  * @author Kyle Williams, Nils Streedain
- * @version February 17, 2021
+ * @version February 10, 2021
  */
 
 public class LargestNumberSolver {
